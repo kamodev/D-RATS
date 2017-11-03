@@ -29,6 +29,7 @@ spell.get_spell().test()
 
 IGNORE_ALL=False
 
+
 def handle_exception(exctyp, value, tb):
     global IGNORE_ALL
 
@@ -41,7 +42,7 @@ def handle_exception(exctyp, value, tb):
     _trace = traceback.format_exception(exctyp, value, tb)
     trace = os.linesep.join(_trace)
 
-    print "---- GUI Exception ----\n%s\n---- End ----\n" % trace
+    print("---- GUI Exception ----\n%s\n---- End ----\n" % trace)
 
     msg = """
 <b><big>D-RATS has encountered an error.</big></b>
@@ -80,12 +81,15 @@ def install_excepthook():
     original_excepthook = sys.excepthook
     sys.excepthook = handle_exception
 
+
 def ignore_exception(exctyp, value, tb):
     return
+
 
 def uninstall_excepthook():
     global original_excepthook
     sys.excepthook = ignore_exception
+
 
 if __name__ == "__main__":
     o = OptionParser()
